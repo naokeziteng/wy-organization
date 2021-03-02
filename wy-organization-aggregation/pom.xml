@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-bff-annotation</artifactId>
+            <artifactId>wy-aggregation-annotation</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>

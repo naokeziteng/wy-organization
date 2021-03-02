@@ -1,8 +1,8 @@
 package com.wenyu7980.organization.department.admin.domain;
 
-import com.wenyu7980.bff.annotation.Aggregation;
-import com.wenyu7980.bff.annotation.AggregationParam;
-import com.wenyu7980.organization.aggregation.UserSimple;
+import com.wenyu7980.aggregation.annotation.Aggregation;
+import com.wenyu7980.aggregation.annotation.AggregationParam;
+import com.wenyu7980.organization.aggregation.UserAggregation;
 import com.wenyu7980.organization.department.domain.Department;
 
 import java.util.List;
@@ -13,23 +13,23 @@ import java.util.List;
  */
 public class DepartmentDetail extends Department {
     @Aggregation
-    private UserSimple admin;
+    private UserAggregation admin;
     @Aggregation(params = { @AggregationParam(name = "departmentId", value = "id") })
-    private List<UserSimple> members;
+    private List<UserAggregation> members;
 
-    public UserSimple getAdmin() {
+    public UserAggregation getAdmin() {
         return admin;
     }
 
-    public void setAdmin(UserSimple admin) {
+    public void setAdmin(UserAggregation admin) {
         this.admin = admin;
     }
 
-    public List<UserSimple> getMembers() {
+    public List<UserAggregation> getMembers() {
         return members;
     }
 
-    public void setMembers(List<UserSimple> members) {
+    public void setMembers(List<UserAggregation> members) {
         this.members = members;
     }
 }

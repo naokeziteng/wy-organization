@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
  *
  * @author wenyu
  */
-public class UserSimple {
+public class UserAggregation {
     @ApiModelProperty(value = "id", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private String id;
     @ApiModelProperty(value = "姓名", accessMode = ApiModelProperty.AccessMode.READ_ONLY)

@@ -28,7 +28,7 @@
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-bff-config</artifactId>
+            <artifactId>wy-aggregation-config</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

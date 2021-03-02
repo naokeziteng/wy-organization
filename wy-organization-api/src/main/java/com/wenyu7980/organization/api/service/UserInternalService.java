@@ -1,6 +1,6 @@
 package com.wenyu7980.organization.api.service;
 
-import com.wenyu7980.organization.aggregation.UserSimple;
+import com.wenyu7980.organization.aggregation.UserAggregation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +20,7 @@ public interface UserInternalService {
      * @return
      */
     @GetMapping("{id}")
-    UserSimple getOne(@PathVariable("id") String id);
+    UserAggregation getOne(@PathVariable("id") String id);
 
     /**
      * 数据聚合用用户列表
@@ -28,5 +28,5 @@ public interface UserInternalService {
      * @return
      */
     @GetMapping()
-    List<UserSimple> getList(@RequestParam(required = false) String departmentId);
+    List<UserAggregation> getList(@RequestParam(required = false) String departmentId);
 }

@@ -1,7 +1,7 @@
 package com.wenyu7980.organization.department.admin.domain;
 
-import com.wenyu7980.bff.annotation.Aggregation;
-import com.wenyu7980.organization.aggregation.UserSimple;
+import com.wenyu7980.aggregation.annotation.Aggregation;
+import com.wenyu7980.organization.aggregation.UserAggregation;
 import com.wenyu7980.organization.department.domain.Department;
 
 /**
@@ -10,13 +10,13 @@ import com.wenyu7980.organization.department.domain.Department;
  */
 public class DepartmentListDetail extends Department {
     @Aggregation
-    private UserSimple admin;
+    private UserAggregation admin;
 
-    public UserSimple getAdmin() {
+    public UserAggregation getAdmin() {
         return admin;
     }
 
-    public void setAdmin(UserSimple admin) {
+    public void setAdmin(UserAggregation admin) {
         this.admin = admin;
     }
 }
