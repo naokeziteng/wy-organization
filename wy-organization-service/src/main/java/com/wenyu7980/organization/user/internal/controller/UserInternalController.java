@@ -18,7 +18,10 @@ public class UserInternalController implements UserInternalService {
     @GetMapping("{id}")
     @Aggregation
     public UserAggregation getOne(@PathVariable("id") String id) {
-        return null;
+        UserAggregation user = new UserAggregation();
+        user.setId(id);
+        user.setName("Tom" + id);
+        return user;
     }
 
     @Override
