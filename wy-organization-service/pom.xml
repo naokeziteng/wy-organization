@@ -28,7 +28,12 @@
         </dependency>
         <dependency>
             <groupId>com.wenyu7980</groupId>
-            <artifactId>wy-aggregation-config</artifactId>
+            <artifactId>wy-authentication-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.wenyu7980</groupId>
+            <artifactId>wy-aggregation-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

@@ -12,7 +12,6 @@ import java.util.List;
  * @author wenyu
  */
 public class DepartmentDetail extends Department {
-    @Aggregation
     private UserAggregation admin;
     @Aggregation(params = { @AggregationParam(name = "departmentId", value = "id") })
     private List<UserAggregation> members;
