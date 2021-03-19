@@ -1,4 +1,4 @@
-package com.wenyu7980.organization.department.domain;
+package com.wenyu7980.organization.user.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -6,10 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
  *
  * @author wenyu
  */
-public class Department {
+public class User {
     @ApiModelProperty(value = "id", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private String id;
-    @ApiModelProperty(value = "名称", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
+    @ApiModelProperty(value = "姓名", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private String name;
 
     public String getId() {

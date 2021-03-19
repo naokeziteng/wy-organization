@@ -1,12 +1,14 @@
-package com.wenyu7980.organization.department.domain;
+package com.wenyu7980.organization.aggregation;
 
+import com.wenyu7980.aggregation.annotation.Aggregation;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  *
  * @author wenyu
  */
-public class Department {
+@Aggregation
+public class DepartmentAggregation {
     @ApiModelProperty(value = "id", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private String id;
     @ApiModelProperty(value = "名称", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
