@@ -1,6 +1,7 @@
 package com.wenyu7980.organization.user.entity;
 
 import com.wenyu7980.organization.department.entity.DepartmentEntity;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -21,9 +22,17 @@ import java.util.Set;
 @EntityListeners(AuditingEntityListener.class)
 public class UserEntity {
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "uuid32")
     private String id;
     /** 姓名 */
     private String name;
+    /** 手机号 */
+    private String mobile;
+    /** 用户名 */
+    private String username;
+    /** 电子邮箱 */
+    private String email;
     /** 所属部门 */
     @ManyToOne
     @JoinColumn(name = "department_id")
@@ -46,8 +55,11 @@ public class UserEntity {
     protected UserEntity() {
     }
 
-    public UserEntity(String name, DepartmentEntity department) {
+    public UserEntity(String name, String mobile, String username, String email, DepartmentEntity department) {
         this.name = name;
+        this.mobile = mobile;
+        this.username = username;
+        this.email = email;
         this.department = department;
     }
 

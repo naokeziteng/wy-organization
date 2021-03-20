@@ -15,7 +15,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.wenyu7980")
 //@EnableWYAggregation
-//@EnableWYAuthentication
+@EnableWYAuthentication
 public class OrganizationApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrganizationApplication.class, args);

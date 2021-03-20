@@ -15,4 +15,10 @@ public class DepartmentConvert {
         department.setId(entity.getId());
         department.setName(entity.getName());
     }
+
+    public static Department convert(DepartmentEntity entity) {
+        Department department = new Department();
+        convert(entity, department);
+        return department;
+    }
 }

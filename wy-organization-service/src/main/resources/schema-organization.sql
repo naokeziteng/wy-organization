@@ -6,6 +6,9 @@ DROP TABLE IF EXISTS `org_department_assistant_leader`;
 CREATE TABLE `org_user`(
   `id` varchar(32) NOT NULL COMMENT '用户id',
   `name` varchar(128) NOT NULL COMMENT '姓名',
+  `username` varchar(128) NOT NULL COMMENT '用户名',
+  `mobile` varchar(45) COMMENT '手机号',
+  `email` varchar(128) COMMENT '电子邮箱',
   `department_id` varchar(32) COMMENT '所属部门id',
   `created_date_time` datetime COMMENT '创建时间',
   `created_user_id` varchar(32) COMMENT '创建者id',
@@ -22,6 +25,7 @@ CREATE TABLE `org_department`(
   `name` varchar(128) NOT NULL COMMENT '名称',
   `parent_id` varchar(32) COMMENT '上级部门id',
   `leader_id` varchar(32) COMMENT '部门领导id',
+  `deleted_flag` bit(1) default 0 COMMENT '删除标志',
   `created_date_time` datetime COMMENT '创建时间',
   `created_user_id` varchar(32) COMMENT '创建者id',
   `updated_date_time` datetime COMMENT '更新时间',

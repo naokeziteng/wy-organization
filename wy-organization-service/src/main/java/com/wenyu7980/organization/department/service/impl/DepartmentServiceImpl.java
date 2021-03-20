@@ -20,4 +20,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     public DepartmentEntity findById(String id) {
         return departmentRepo.findById(id).orElseThrow(() -> new NotFoundException("部门{0}不存在", id));
     }
+
+    @Override
+    public DepartmentEntity save(DepartmentEntity entity) {
+        return departmentRepo.save(entity);
+    }
 }

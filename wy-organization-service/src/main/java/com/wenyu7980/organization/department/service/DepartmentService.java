@@ -13,4 +13,11 @@ public interface DepartmentService {
      * @return
      */
     DepartmentEntity findById(String id);
+
+    /**
+     * 保存
+     * @param entity
+     * @return
+     */
+    DepartmentEntity save(DepartmentEntity entity);
 }

@@ -5,6 +5,8 @@ import com.wenyu7980.organization.department.admin.domain.DepartmentAdminDetail;
 import com.wenyu7980.organization.department.admin.domain.DepartmentAdminListDetail;
 import com.wenyu7980.organization.department.admin.domain.DepartmentAdminPageDetail;
 import com.wenyu7980.organization.department.admin.handler.DepartmentAdminQueryHandler;
+import com.wenyu7980.query.QueryCompare;
+import com.wenyu7980.query.QueryCondition;
 import com.wenyu7980.query.QueryLogic;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,15 +32,15 @@ public class DepartmentAdminQueryController {
     @ApiOperation("部门列表查询（管理端）")
     @GetMapping("list")
     public List<DepartmentAdminListDetail> getList() {
-        return queryHandler.getList(QueryLogic.and());
+        return queryHandler.getList(QueryLogic.and(QueryCondition.of("deletedFlag", QueryCompare.EQ, false)));
     }
 
     @ApiOperation("部门列表查询（管理端）")
     @GetMapping()
     public PageBody<DepartmentAdminPageDetail> getPage(@ApiParam("页码") @RequestParam(defaultValue = "0") int page,
       @ApiParam("页大小") @RequestParam(defaultValue = "10") int size) {
-        return queryHandler
-          .getPage(QueryLogic.and(), PageRequest.of(page, size, Sort.Direction.DESC, "createdDateTime"));
+        return queryHandler.getPage(QueryLogic.and(QueryCondition.of("deletedFlag", QueryCompare.EQ, false)),
+          PageRequest.of(page, size, Sort.Direction.DESC, "createdDateTime"));
     }
 
     @ApiOperation("部门查询（管理端）")

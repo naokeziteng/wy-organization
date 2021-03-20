@@ -1,10 +1,13 @@
 package com.wenyu7980.organization.department.entity;
 
+import com.wenyu7980.organization.department.admin.domain.DepartmentAdminModify;
 import com.wenyu7980.organization.user.entity.UserEntity;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,6 +23,8 @@ import java.util.Set;
 @Table(name = "org_department")
 public class DepartmentEntity {
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "uuid32")
     private String id;
     /** 名称 */
     private String name;
@@ -43,6 +48,8 @@ public class DepartmentEntity {
     /** 部门成员 */
     @OneToMany(mappedBy = "department")
     private Set<UserEntity> members;
+    /** 是否删除 */
+    private Boolean deletedFlag = false;
     @CreatedDate
     private LocalDateTime createdDateTime;
     @CreatedBy
@@ -55,9 +62,31 @@ public class DepartmentEntity {
     protected DepartmentEntity() {
     }
 
-    public DepartmentEntity(String name, DepartmentEntity parent) {
+    public DepartmentEntity(String name, @Nullable UserEntity leader, @Nullable DepartmentEntity parent) {
         this.name = name;
+        this.leader = leader;
         this.parent = parent;
+    }
+
+    /**
+     * 修改
+     * @param name
+     * @param leader
+     * @param department
+     */
+    public void modify(String name, @Nullable UserEntity leader, @Nullable DepartmentAdminModify department) {
+        this.name = name;
+        this.leader = leader;
+        this.parent = parent;
+    }
+
+    /**
+     * 删除
+     */
+    public void delete() {
+        this.leader = null;
+        this.assistantLeaders.clear();
+        this.deletedFlag = true;
     }
 
     public String getId() {
@@ -104,6 +133,10 @@ public class DepartmentEntity {
         return updatedUserId;
     }
 
+    public Boolean getDeletedFlag() {
+        return deletedFlag;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -120,4 +153,5 @@ public class DepartmentEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

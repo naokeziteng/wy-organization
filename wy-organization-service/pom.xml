@@ -29,6 +29,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.wenyu7980</groupId>-->
+<!--            <artifactId>wy-authentication-api</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.wenyu7980</groupId>
             <artifactId>wy-organization-api</artifactId>

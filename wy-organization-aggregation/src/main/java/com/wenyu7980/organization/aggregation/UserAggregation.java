@@ -14,10 +14,14 @@ public class UserAggregation {
     @ApiModelProperty(value = "姓名", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private String name;
 
+    public static UserAggregation of(String id) {
+        return new UserAggregation(id);
+    }
+
     public UserAggregation() {
     }
 
-    public UserAggregation(String id) {
+    private UserAggregation(String id) {
         this.id = id;
     }
 
