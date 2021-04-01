@@ -1,10 +1,10 @@
-package com.wenyu7980.organization.department.admin.handler.impl;
+package com.wenyu7980.organization.department.management.handler.impl;
 
 import com.wenyu7980.common.exceptions.code409.ExistedException;
 import com.wenyu7980.common.exceptions.code409.InconsistentException;
-import com.wenyu7980.organization.department.admin.domain.DepartmentAdminAdd;
-import com.wenyu7980.organization.department.admin.domain.DepartmentAdminModify;
-import com.wenyu7980.organization.department.admin.handler.DepartmentAdminHandler;
+import com.wenyu7980.organization.department.management.domain.DepartmentManagementAdd;
+import com.wenyu7980.organization.department.management.domain.DepartmentManagementModify;
+import com.wenyu7980.organization.department.management.handler.DepartmentManagementHandler;
 import com.wenyu7980.organization.department.convert.DepartmentConvert;
 import com.wenyu7980.organization.department.domain.Department;
 import com.wenyu7980.organization.department.entity.DepartmentEntity;
@@ -28,7 +28,7 @@ import java.util.Objects;
  * @author wenyu
  */
 @Component
-public class DepartmentAdminHandlerImpl implements DepartmentAdminHandler {
+public class DepartmentManagementHandlerImpl implements DepartmentManagementHandler {
     @Autowired
     private DepartmentService departmentService;
     @Autowired
@@ -38,7 +38,7 @@ public class DepartmentAdminHandlerImpl implements DepartmentAdminHandler {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public Department add(DepartmentAdminAdd department) {
+    public Department add(DepartmentManagementAdd department) {
         QueryLogic logic = QueryLogic.and(QueryCondition.of("deletedFlag", QueryCompare.EQ, false),
           QueryCondition.of("name", QueryCompare.EQ, department.getName()));
         if (Objects.nonNull(department.getParentId())) {
@@ -65,7 +65,7 @@ public class DepartmentAdminHandlerImpl implements DepartmentAdminHandler {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public Department modify(String id, DepartmentAdminModify department) {
+    public Department modify(String id, DepartmentManagementModify department) {
         DepartmentEntity entity = departmentService.findById(id);
         QueryLogic logic = QueryLogic.and(QueryCondition.of("deletedFlag", QueryCompare.EQ, false),
           QueryCondition.of("name", QueryCompare.EQ, department.getName()));

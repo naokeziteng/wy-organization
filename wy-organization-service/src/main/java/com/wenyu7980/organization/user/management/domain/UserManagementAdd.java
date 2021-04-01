@@ -1,4 +1,4 @@
-package com.wenyu7980.organization.user.admin.domain;
+package com.wenyu7980.organization.user.management.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
  *
  * @author wenyu
  */
-public class UserAdminAdd {
+public class UserManagementAdd {
     @ApiModelProperty(value = "用户名", required = true)
     @NotEmpty
     @Size(max = 128)

@@ -1,4 +1,4 @@
-package com.wenyu7980.organization.department.admin.domain;
+package com.wenyu7980.organization.department.management.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
  *
  * @author wenyu
  */
-public class DepartmentAdminModify {
+public class DepartmentManagementModify {
     @ApiModelProperty(value = "", required = true)
     @NotEmpty
     private String name;

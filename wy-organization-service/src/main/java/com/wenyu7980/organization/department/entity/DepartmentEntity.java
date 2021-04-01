@@ -1,6 +1,6 @@
 package com.wenyu7980.organization.department.entity;
 
-import com.wenyu7980.organization.department.admin.domain.DepartmentAdminModify;
+import com.wenyu7980.organization.department.management.domain.DepartmentManagementModify;
 import com.wenyu7980.organization.user.entity.UserEntity;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedBy;
@@ -41,10 +41,10 @@ public class DepartmentEntity {
     private UserEntity leader;
     /** 分管领导 */
     @ManyToMany
-    @JoinTable(name = "org_department_assistant_leader", joinColumns = {
+    @JoinTable(name = "org_department_manager", joinColumns = {
       @JoinColumn(name = "department_id")
-    }, inverseJoinColumns = { @JoinColumn(name = "assistant_leader_id") })
-    private Set<UserEntity> assistantLeaders;
+    }, inverseJoinColumns = { @JoinColumn(name = "manager_id") })
+    private Set<UserEntity> managers;
     /** 部门成员 */
     @OneToMany(mappedBy = "department")
     private Set<UserEntity> members;
@@ -74,7 +74,7 @@ public class DepartmentEntity {
      * @param leader
      * @param department
      */
-    public void modify(String name, @Nullable UserEntity leader, @Nullable DepartmentAdminModify department) {
+    public void modify(String name, @Nullable UserEntity leader, @Nullable DepartmentManagementModify department) {
         this.name = name;
         this.leader = leader;
         this.parent = parent;
@@ -85,7 +85,7 @@ public class DepartmentEntity {
      */
     public void delete() {
         this.leader = null;
-        this.assistantLeaders.clear();
+        this.managers.clear();
         this.deletedFlag = true;
     }
 
@@ -109,8 +109,8 @@ public class DepartmentEntity {
         return leader;
     }
 
-    public Set<UserEntity> getAssistantLeaders() {
-        return assistantLeaders;
+    public Set<UserEntity> getManagers() {
+        return managers;
     }
 
     public Set<UserEntity> getMembers() {

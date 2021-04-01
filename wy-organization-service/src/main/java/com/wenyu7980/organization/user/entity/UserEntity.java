@@ -41,8 +41,8 @@ public class UserEntity {
     @OneToMany(mappedBy = "leader")
     private Set<DepartmentEntity> departments;
     /** 分管部门 */
-    @ManyToMany(mappedBy = "assistantLeaders")
-    private Set<DepartmentEntity> assistantDepartments;
+    @ManyToMany(mappedBy = "managers")
+    private Set<DepartmentEntity> manageDepartments;
     @CreatedDate
     private LocalDateTime createdDateTime;
     @CreatedBy
@@ -71,6 +71,18 @@ public class UserEntity {
         return name;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     public DepartmentEntity getDepartment() {
         return department;
     }
@@ -79,8 +91,8 @@ public class UserEntity {
         return departments;
     }
 
-    public Set<DepartmentEntity> getAssistantDepartments() {
-        return assistantDepartments;
+    public Set<DepartmentEntity> getManageDepartments() {
+        return manageDepartments;
     }
 
     public LocalDateTime getCreatedDateTime() {

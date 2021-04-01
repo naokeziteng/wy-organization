@@ -1,7 +1,7 @@
-package com.wenyu7980.organization.user.admin.controller;
+package com.wenyu7980.organization.user.management.controller;
 
-import com.wenyu7980.organization.user.admin.domain.UserAdminAdd;
-import com.wenyu7980.organization.user.admin.handler.UserAdminHandler;
+import com.wenyu7980.organization.user.management.domain.UserManagementAdd;
+import com.wenyu7980.organization.user.management.handler.UserManagementHandler;
 import com.wenyu7980.organization.user.domain.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,14 +19,14 @@ import javax.validation.Valid;
  */
 @Api(tags = "用户管理（管理端）")
 @RestController
-@RequestMapping("admin/users")
-public class UserAdminController {
+@RequestMapping("management/users")
+public class UserManagementController {
     @Autowired
-    private UserAdminHandler userAdminHandler;
+    private UserManagementHandler userManagementHandler;
 
     @ApiOperation("创建")
     @PostMapping
-    public User add(@RequestBody @Valid UserAdminAdd user) {
-        return userAdminHandler.add(user);
+    public User add(@RequestBody @Valid UserManagementAdd user) {
+        return userManagementHandler.add(user);
     }
 }

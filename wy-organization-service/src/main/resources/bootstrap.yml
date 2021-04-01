@@ -1,5 +1,5 @@
 server:
-  port: 8003
+  port: 8004
 spring:
   profiles:
     active: ${profile.env}
@@ -8,8 +8,11 @@ spring:
   cloud:
     nacos:
       discovery:
+        namespace: ${nacos.discovery.namespace}
+        group: ${nacos.discovery.group}
         server-addr: ${nacos.discovery.address}
       config:
+        namespace: ${nacos.discovery.namespace}
+        group: ${nacos.discovery.group}
         server-addr: ${nacos.config.address}
         file-extension: yaml
-        group: ${nacos.config.group}

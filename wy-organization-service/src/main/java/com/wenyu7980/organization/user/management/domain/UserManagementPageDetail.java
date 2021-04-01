@@ -1,4 +1,4 @@
-package com.wenyu7980.organization.user.admin.domain;
+package com.wenyu7980.organization.user.management.domain;
 
 import com.wenyu7980.organization.aggregation.UserAggregation;
 import com.wenyu7980.organization.user.domain.User;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @author wenyu
  */
 @ApiModel(description = "用户列表")
-public class UserAdminDetail extends User {
+public class UserManagementPageDetail extends User {
     @ApiModelProperty(value = "创建者", accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private UserAggregation createdUser;
     @ApiModelProperty(value = "创建时间", accessMode = ApiModelProperty.AccessMode.READ_ONLY)

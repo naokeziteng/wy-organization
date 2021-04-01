@@ -1,10 +1,10 @@
-package com.wenyu7980.organization.department.admin.controller;
+package com.wenyu7980.organization.department.management.controller;
 
 import com.wenyu7980.data.jpa.query.PageBody;
-import com.wenyu7980.organization.department.admin.domain.DepartmentAdminDetail;
-import com.wenyu7980.organization.department.admin.domain.DepartmentAdminListDetail;
-import com.wenyu7980.organization.department.admin.domain.DepartmentAdminPageDetail;
-import com.wenyu7980.organization.department.admin.handler.DepartmentAdminQueryHandler;
+import com.wenyu7980.organization.department.management.domain.DepartmentManagementDetail;
+import com.wenyu7980.organization.department.management.domain.DepartmentManagementListDetail;
+import com.wenyu7980.organization.department.management.domain.DepartmentManagementPageDetail;
+import com.wenyu7980.organization.department.management.handler.DepartmentManagementQueryHandler;
 import com.wenyu7980.query.QueryCompare;
 import com.wenyu7980.query.QueryCondition;
 import com.wenyu7980.query.QueryLogic;
@@ -24,20 +24,20 @@ import java.util.List;
  */
 @Api(tags = "部门管理（管理端）")
 @RestController
-@RequestMapping("admin/departments")
-public class DepartmentAdminQueryController {
+@RequestMapping("management/departments")
+public class DepartmentManagementQueryController {
     @Autowired
-    private DepartmentAdminQueryHandler queryHandler;
+    private DepartmentManagementQueryHandler queryHandler;
 
     @ApiOperation("部门列表查询（管理端）")
     @GetMapping("list")
-    public List<DepartmentAdminListDetail> getList() {
+    public List<DepartmentManagementListDetail> getList() {
         return queryHandler.getList(QueryLogic.and(QueryCondition.of("deletedFlag", QueryCompare.EQ, false)));
     }
 
     @ApiOperation("部门列表查询（管理端）")
     @GetMapping()
-    public PageBody<DepartmentAdminPageDetail> getPage(@ApiParam("页码") @RequestParam(defaultValue = "0") int page,
+    public PageBody<DepartmentManagementPageDetail> getPage(@ApiParam("页码") @RequestParam(defaultValue = "0") int page,
       @ApiParam("页大小") @RequestParam(defaultValue = "10") int size) {
         return queryHandler.getPage(QueryLogic.and(QueryCondition.of("deletedFlag", QueryCompare.EQ, false)),
           PageRequest.of(page, size, Sort.Direction.DESC, "createdDateTime"));
@@ -45,7 +45,7 @@ public class DepartmentAdminQueryController {
 
     @ApiOperation("部门查询（管理端）")
     @GetMapping("{id}")
-    public DepartmentAdminDetail getById(@PathVariable("id") String id) {
+    public DepartmentManagementDetail getById(@PathVariable("id") String id) {
         return queryHandler.getById(id);
     }
 }

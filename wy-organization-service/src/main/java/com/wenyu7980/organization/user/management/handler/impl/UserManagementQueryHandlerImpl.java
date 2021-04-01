@@ -1,11 +1,11 @@
-package com.wenyu7980.organization.user.admin.handler.impl;
+package com.wenyu7980.organization.user.management.handler.impl;
 
 import com.wenyu7980.data.jpa.query.AbstractQueryHandler;
 import com.wenyu7980.organization.aggregation.UserAggregation;
-import com.wenyu7980.organization.user.admin.domain.UserAdminDetail;
-import com.wenyu7980.organization.user.admin.domain.UserAdminListDetail;
-import com.wenyu7980.organization.user.admin.domain.UserAdminPageDetail;
-import com.wenyu7980.organization.user.admin.handler.UserAdminQueryHandler;
+import com.wenyu7980.organization.user.management.domain.UserManagementDetail;
+import com.wenyu7980.organization.user.management.domain.UserManagementListDetail;
+import com.wenyu7980.organization.user.management.domain.UserManagementPageDetail;
+import com.wenyu7980.organization.user.management.handler.UserManagementQueryHandler;
 import com.wenyu7980.organization.user.convert.UserConvert;
 import com.wenyu7980.organization.user.entity.UserEntity;
 import com.wenyu7980.organization.user.service.UserService;
@@ -17,16 +17,17 @@ import org.springframework.stereotype.Component;
  * @author wenyu
  */
 @Component
-public class UserAdminQueryHandlerImpl
-  extends AbstractQueryHandler<UserEntity, UserAdminListDetail, UserAdminPageDetail> implements UserAdminQueryHandler {
+public class UserManagementQueryHandlerImpl
+  extends AbstractQueryHandler<UserEntity, UserManagementListDetail, UserManagementPageDetail> implements
+  UserManagementQueryHandler {
 
     @Autowired
     private UserService userService;
 
     @Override
-    public UserAdminDetail getById(String id) {
+    public UserManagementDetail getById(String id) {
         UserEntity entity = userService.findById(id);
-        UserAdminDetail user = new UserAdminDetail();
+        UserManagementDetail user = new UserManagementDetail();
         UserConvert.convert(entity, user);
         user.setCreatedDateTime(entity.getCreatedDateTime());
         user.setUpdatedDateTime(entity.getUpdatedDateTime());
@@ -36,15 +37,15 @@ public class UserAdminQueryHandlerImpl
     }
 
     @Override
-    public UserAdminListDetail convertList(UserEntity entity) {
-        UserAdminListDetail detail = new UserAdminListDetail();
+    public UserManagementListDetail convertList(UserEntity entity) {
+        UserManagementListDetail detail = new UserManagementListDetail();
         UserConvert.convert(entity, detail);
         return detail;
     }
 
     @Override
-    public UserAdminPageDetail convertPage(UserEntity entity) {
-        UserAdminPageDetail detail = new UserAdminPageDetail();
+    public UserManagementPageDetail convertPage(UserEntity entity) {
+        UserManagementPageDetail detail = new UserManagementPageDetail();
         UserConvert.convert(entity, detail);
         detail.setCreatedDateTime(entity.getCreatedDateTime());
         detail.setUpdatedDateTime(entity.getUpdatedDateTime());

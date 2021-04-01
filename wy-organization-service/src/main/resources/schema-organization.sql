@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS `org_user`;
 DROP TABLE IF EXISTS `org_department`;
-DROP TABLE IF EXISTS `org_department_assistant_leader`;
+DROP TABLE IF EXISTS `org_department_manager`;
 
 -- 用户表
 CREATE TABLE `org_user`(
@@ -37,10 +37,10 @@ COMMENT '部门表';
 
 
 -- 部门分管领导表
-CREATE TABLE `org_department_assistant_leader`(
+CREATE TABLE `org_department_manager`(
   `department_id` varchar(32) NOT NULL COMMENT '部门id',
-  `assistant_leader_id` varchar(32) NOT NULL COMMENT '分管领导id',
-  primary key(`department_id`,`assistant_leader_id`)
+  `manager_id` varchar(32) NOT NULL COMMENT '分管领导id',
+  primary key(`department_id`,`manager_id`)
 )
 ENGINE=innodb DEFAULT CHARACTER SET utf8mb4
 COMMENT '部门表';

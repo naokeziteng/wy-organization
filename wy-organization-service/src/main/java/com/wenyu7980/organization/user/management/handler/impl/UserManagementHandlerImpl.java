@@ -1,11 +1,11 @@
-package com.wenyu7980.organization.user.admin.handler.impl;
+package com.wenyu7980.organization.user.management.handler.impl;
 
 import com.wenyu7980.authentication.api.domain.UserInternalAdd;
 import com.wenyu7980.authentication.api.service.UserAuthInternalService;
 import com.wenyu7980.organization.department.entity.DepartmentEntity;
 import com.wenyu7980.organization.department.service.DepartmentService;
-import com.wenyu7980.organization.user.admin.domain.UserAdminAdd;
-import com.wenyu7980.organization.user.admin.handler.UserAdminHandler;
+import com.wenyu7980.organization.user.management.domain.UserManagementAdd;
+import com.wenyu7980.organization.user.management.handler.UserManagementHandler;
 import com.wenyu7980.organization.user.convert.UserConvert;
 import com.wenyu7980.organization.user.domain.User;
 import com.wenyu7980.organization.user.entity.UserEntity;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author wenyu
  */
 @Component
-public class UserAdminHandlerImpl implements UserAdminHandler {
+public class UserManagementHandlerImpl implements UserManagementHandler {
     @Autowired
     private UserService userService;
     @Autowired
@@ -30,7 +30,7 @@ public class UserAdminHandlerImpl implements UserAdminHandler {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public User add(UserAdminAdd user) {
+    public User add(UserManagementAdd user) {
         DepartmentEntity department = departmentService.findById(user.getDepartmentId());
         UserEntity entity = new UserEntity(user.getName(), user.getMobile(), user.getUsername(), user.getEmail(),
           department);
